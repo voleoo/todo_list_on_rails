@@ -1,0 +1,21 @@
+<div class="check_box">
+  <input type="checkbox" <%= done %> name="checkbox">
+</div>
+<div class="task_body <%= done %> <%= displayBlock %>">
+  <%= name %>
+</div>
+<div class="edit_task <%= displayNone %>">
+  <input class="edit_task" value="<%= name %>"
+    placeholder="Start typing here to update a task">
+</div>
+<div class="options_task">
+  <div class="option_sort">
+    <div class="sotr_up"> </div>
+    <div class="hr_line"> </div>
+    <div class="sotr_down"> </div>
+  </div>
+  <div class="option_line"> </div>
+  <div class="option_edit"> </div>
+  <div class="option_line"> </div>
+  <div class="option_trash"> </div>
+</div>
