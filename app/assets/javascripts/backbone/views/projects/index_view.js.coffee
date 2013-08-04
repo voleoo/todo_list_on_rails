@@ -10,7 +10,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
 
     @model.bind "change", @render, this
     @model.bind "destroy", @remove, this
-    @template = JST["backbone/templates/projects/project"]
+    @template = HoganTemplates["projects/project"]
     console.log @
 
   addOneTask: (model) ->
@@ -30,7 +30,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     @addAllTasks()
 
   render: ->
-    renderProject = @template(@model.toJSON())
+    renderProject = @template.render(@model.toJSON())
     $(@el).html renderProject
     $(@el).addClass "project"
     @addAllTasks this

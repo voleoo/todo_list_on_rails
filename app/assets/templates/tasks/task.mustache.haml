@@ -1,0 +1,15 @@
+.check_box
+  <input type="checkbox" {{#done}}checked{{/done}}>
+%div{:class => "task_body {{#done}}checked{{/done}} {{displayBlock}}"}
+  {{name}}
+%div{:class => "edit_task {{displayNone}}"}
+  %input.edit_task{:placeholder => "Start typing here to update a task", :value => "{{name}}"}/
+.options_task
+  .option_sort
+    .sotr_up
+    .hr_line
+    .sotr_down
+  .option_line
+  .option_edit
+  .option_line
+  .option_trash

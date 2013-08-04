@@ -5,7 +5,7 @@ class TodoListOnRails.Views.Projects.ProjectView extends Backbone.View
   id : 'container'
 
   initialize: ->
-    @template = JST["backbone/templates/projects/main"]
+    @template = HoganTemplates['projects/main']
     @projects = @options.projects
 
     @projects.bind "add", @addOne, this
@@ -14,10 +14,10 @@ class TodoListOnRails.Views.Projects.ProjectView extends Backbone.View
     @render()
 
   events:
-    "click #create_project": "createProject"
+    "click #create-project": "createProject"
 
   render: ->
-    @.$el.html @template
+    @.$el.html @template.render()
     $('body').append @.$el
 
   addOne: (Project) ->
