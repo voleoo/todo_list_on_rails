@@ -1,121 +1,124 @@
-ul{
-  list-style-type: none;
-  margin: 0px;
-}
+ul{}
+
 li.task{
   background: #ffffff;
   border-bottom: 2px solid #e7ebea;
   border-left: 2px solid #e7ebea;
   border-style: 2px solid #e7ebea;
   min-height: 50px;
-}
-li.task:hover {
-  background: #fcfed5;
-}
-li:last-child {
-  border-radius: 0px 0px 15px 15px;
-}
-li:first-child .sotr_up{
-  display: none;
-}
-li:first-child .hr_line{
-  margin-top: 6px;
-}
-li:last-child .sotr_down{
-  display: none;
-}
-.check_box{
-  border-right: 2px solid #efdadf;
-  padding-top: 15px;
-  min-height: 35px;
-  width: 40px;
-  float: left;
-}
-.task_body{
   text-align: left;
-  margin-left: 10px;
-  padding-left: 15px;
-  padding-top: 17px;
-  min-height: 35px;
-  width: 700px;
-  border-left: 2px solid #efdadf;
-  border-right: 2px solid #e7ebea;
-  float: left;
-  color: #999999;
-  font-size: 20px;
+  &:hover{
+    background: #fcfed5;
+    .options-task{
+      display: block;
+    }
+  }
+  &:first-child {
+    .sotr-up{
+      display: none;
+    }
+    .hr-line{
+      margin-top: 6px;
+    }
+  }
+  &:last-child {
+    border-radius: 0 0 1em 1em;
+    .sotr-down{
+      display: none;
+    }
+  }
 }
-input.edit_task{
-  color: #999999;
-  font-size: 18px;
-  margin: 7px 8px 0px 13px;
-  width: 680px;
-  height: 22px;
-  float: left;
-}
-div.edit_task{
-  text-align: left;
-  margin-left: 10px;
-  min-height: 50px;
-  width: 715px;
-  border-left: 2px solid #efdadf;
-  border-right: 2px solid #e7ebea;
-  float: left;
-  color: #999999;
-  font-size: 20px;
-}
-.options_task{
-  display: none;
-  padding-left: 15px;
-  min-height: 32px;
-  float: left;
-  padding-top: 18px;
-}
-li.task:hover .options_task{
-  display: block;
-}
-.option_sort{
-  margin-left: 22px;
-  float: left;
-}
-.sotr_up{
-  background: url(/assets/up.png);
-  height: 4px;
-  width: 6px;
-  margin-left: 2px;
-  border: 1px solid #000000;
-}
-.sotr_down{
-  background: url(/assets/down.png);
-  height: 4px;
-  width: 6px;
-  margin-left: 2px;
-  border: 1px solid #000000;
-}
-.hr_line{
-  background: url(/assets/hr_line.png);
-  height: 1px;
-  width: 10px;
-  margin: 2px 0px 2px 0px;
-}
-.option_edit{
-  background: url(/assets/pencil_small.png);
-  height: 12px;
-  width: 12px;
-  float: left;
-}
-.option_trash{
-  background: url(/assets/trash_small.png);
-  height: 12px;
-  width: 12px;
-  float: left;
-}
-.option_line{
-  background: url(/assets/vertical_small.png);
-  margin: 0px 15px 0px 15px;
-  height: 13px;
-  width: 1px;
-  float: left;
-}
+  .check-box{
+    @include column(1);
+    border-right: 2px solid #efdadf;
+    padding-top: 15px;
+    min-height: 35px;
+    float: left;
+  }
+  .task-body{
+    @include column(19);
+    margin-left: 10px;
+    padding-left: 15px;
+    padding-top: 17px;
+    min-height: 35px;
+    border-left: 2px solid #efdadf;
+    border-right: 2px solid #e7ebea;
+    float: left;
+    color: #999999;
+    font-size: 20px;
+  }
+  div.edit-task{
+    text-align: left;
+    margin-left: 10px;
+    min-height: 50px;
+    width: 715px;
+    border-left: 2px solid #efdadf;
+    border-right: 2px solid #e7ebea;
+    float: left;
+    color: #999999;
+    font-size: 20px;
+  }
+  input.edit-task{
+    color: #999999;
+    font-size: 18px;
+    margin: 7px 8px 0px 13px;
+    width: 680px;
+    height: 22px;
+    float: left;
+  }
+  .options-task{
+    @include column(4);
+    display: none;
+    padding-left: 15px;
+    padding-top: 18px;
+    min-height: 32px;
+    float: left;
+  }
+    .option-sort{
+      margin-left: 22px;
+      float: left;
+    }
+      .sotr-up{
+        background: url(/assets/up.png);
+        height: 4px;
+        width: 6px;
+        margin-left: 2px;
+        border: 1px solid #000000;
+      }
+      .hr-line{
+        background: url(/assets/hr_line.png);
+        height: 1px;
+        width: 10px;
+        margin: 2px 0px 2px 0px;
+      }
+      .sotr-down{
+        background: url(/assets/down.png);
+        height: 4px;
+        width: 6px;
+        margin-left: 2px;
+        border: 1px solid #000000;
+      }
+
+    .option-edit{
+      background: url(/assets/pencil_small.png);
+      height: 12px;
+      width: 12px;
+      float: left;
+    }
+    .option-line{
+      background: url(/assets/vertical_small.png);
+      margin: 0px 15px 0px 15px;
+      height: 13px;
+      width: 1px;
+      float: left;
+    }
+    .option-trash{
+      background: url(/assets/trash_small.png);
+      height: 12px;
+      width: 12px;
+      float: left;
+    }
+
 .displayNone{
   display: none;
 }

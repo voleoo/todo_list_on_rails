@@ -16,13 +16,13 @@ class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
     @
 
   events:
-    "click .option_trash": "clear"
+    "click .option-trash": "clear"
     "click input[type=checkbox]": "checked"
-    "click .option_edit": "edit"
-    "dblclick .task_body": "dbledit"
-    "change input.edit_task": "edited"
-    "click .sotr_up": "sortUp"
-    "click .sotr_down": "sortDown"
+    "click .option-edit": "edit"
+    "dblclick .task-body": "dbledit"
+    "change input.edit-task": "edited"
+    "click .sotr-up": "sortUp"
+    "click .sotr-down": "sortDown"
 
   sortUp: ->
     console.log @

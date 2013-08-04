@@ -1,3 +1,7 @@
 body{
   background: #bb4d00 url(/assets/background.png) repeat-x;
 }
+  .container{
+    @include outerRow;
+    text-align: center;
+  }
