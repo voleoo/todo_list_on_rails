@@ -19,9 +19,6 @@ class TodoListOnRails.Views.Projects.ProjectView extends Backbone.View
   render: ->
     @.$el.html @template
     $('body').append @.$el
-    @delegateEvents()
-    console.log "render"
-    @
 
   addOne: (Project) ->
     stView = new TodoListOnRails.Views.Projects.IndexView(model: Project)
@@ -34,4 +31,3 @@ class TodoListOnRails.Views.Projects.ProjectView extends Backbone.View
     @projects.create
       displayBlock: "displayNone"
       displayNone: "displayBlock"
-    console.log 'привет'

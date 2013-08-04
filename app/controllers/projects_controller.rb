@@ -17,6 +17,9 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   def show
+    respond_to do | format |
+      format.json { render json: @projects }
+    end
   end
 
   # GET /projects/new
@@ -33,25 +36,28 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
 
     if @project.save
-      redirect_to @project, notice: 'Project was successfully created.'
+      respond_to do | format |
+        format.json { render json: @project }
+      end
     else
-      render action: 'new'
+      respond_to do | format |
+        format.json { render json: @project }
+      end
     end
   end
 
   # PATCH/PUT /projects/1
   def update
     if @project.update(project_params)
-      redirect_to @project, notice: 'Project was successfully updated.'
+      render json: @project
     else
-      render action: 'edit'
     end
   end
 
   # DELETE /projects/1
   def destroy
     @project.destroy
-    redirect_to projects_url, notice: 'Project was successfully destroyed.'
+    render json: 'destroed'
   end
 
   private
@@ -62,6 +68,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def project_params
-      params[:project]
+      params.require(:project).permit(:name, :project_id, :position, :done)
     end
 end

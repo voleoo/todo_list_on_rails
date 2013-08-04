@@ -27,25 +27,30 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
 
     if @task.save
-      redirect_to @task, notice: 'Task was successfully created.'
+      respond_to do | format |
+        format.json { render json: @task }
+      end
     else
-      render action: 'new'
+      respond_to do | format |
+        format.json { render json: @task }
+      end
     end
   end
 
   # PATCH/PUT /tasks/1
   def update
     if @task.update(task_params)
-      redirect_to @task, notice: 'Task was successfully updated.'
+      respond_to do | format |
+        format.json { render json: @task }
+      end
     else
-      render action: 'edit'
     end
   end
 
   # DELETE /tasks/1
   def destroy
     @task.destroy
-    redirect_to tasks_url, notice: 'Task was successfully destroyed.'
+    render json: 'destroed'
   end
 
   private
@@ -56,6 +61,6 @@ class TasksController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def task_params
-      params[:task]
+      params.require(:task).permit(:name, :project_id, :position, :done)
     end
 end

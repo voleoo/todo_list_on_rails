@@ -3,6 +3,7 @@ TodoListOnRails.Views.Tasks ||= {}
 class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
 
   tagName: "li"
+
   initialize: ->
     @model.bind "change", @render, @
     @model.bind "destroy", @remove, @
@@ -12,7 +13,7 @@ class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
     renderTask = @templateTask(@model.toJSON())
     $(@el).html renderTask
     $(@el).addClass "task"
-    this
+    @
 
   events:
     "click .option_trash": "clear"
@@ -24,7 +25,8 @@ class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
     "click .sotr_down": "sortDown"
 
   sortUp: ->
-    arrayModels = TasksList.where(project_id: @model.get("project_id"))
+    console.log @
+    arrayModels = @model.collection.where(project_id: @model.get("project_id"))
     arrayModels = _.sortBy(arrayModels, (model) ->
       model.get "position"
     )
@@ -36,14 +38,10 @@ class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
         arrayModels[i].set position: tempPosition
         arrayModels[i - 1].save()
         arrayModels[i].save()
-        
-        # getting model project in
-        model = ProjectsList.get(@model.get("project_id"))
-        model.set time: new Date().getTime()
       ++i
 
   sortDown: ->
-    arrayModels = TasksList.where(project_id: @model.get("project_id"))
+    arrayModels = @model.collection.where(project_id: @model.get("project_id"))
     arrayModels = _.sortBy(arrayModels, (model) ->
       model.get "position"
     )
@@ -55,8 +53,6 @@ class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
         arrayModels[i].set position: tempPosition
         arrayModels[i + 1].save()
         arrayModels[i].save()
-        model = ProjectsList.get(@model.get("project_id"))
-        model.set time: new Date().getTime()
       ++i
 
   edit: ->
@@ -87,11 +83,11 @@ class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
     @model.save()
 
   clear: ->
-    @model.clear()
+    @model.destroy()
 
   checked: ->
-    if "checked" is @model.get("checked")
-      @model.set checked: ""
+    if @model.get("done")
+      @model.set done: false
     else
-      @model.set checked: "checked"
+      @model.set done: true
     @model.save()

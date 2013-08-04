@@ -1,7 +1,6 @@
- class TodoListOnRails.Routers.ProjectsRouter extends Backbone.Router
+class TodoListOnRails.Routers.ProjectsRouter extends Backbone.Router
   initialize: () ->
     @projects = new TodoListOnRails.Collections.ProjectsCollection()
-    #@projects.fetch()
 
   routes:
     ".*"        : "index"

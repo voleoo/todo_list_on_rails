@@ -1,5 +1,5 @@
 <div class="check_box">
-  <input type="checkbox" <%= done %> name="checkbox">
+  <input type="checkbox" name="checkbox" <%= done ?  "checked" : '' %>>
 </div>
 <div class="task_body <%= done %> <%= displayBlock %>">
   <%= name %>

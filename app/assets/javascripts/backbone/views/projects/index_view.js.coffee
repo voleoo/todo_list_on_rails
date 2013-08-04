@@ -5,11 +5,12 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
   initialize: ->
     @tasks = new TodoListOnRails.Collections.TasksCollection()
     @tasks.fetch()
+    @tasks.bind "reset", @addAllTasks, this
+    @tasks.bind "change:position", @updatePosition, this
 
     @model.bind "change", @render, this
     @model.bind "destroy", @remove, this
     @template = JST["backbone/templates/projects/project"]
-    @tasks.bind "reset", @addAllTasks, this
     console.log @
 
   addOneTask: (model) ->
@@ -24,8 +25,9 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     for key of arrayModels
       @addOneTask arrayModels[key]
 
-  updateTasks: ->
-    console.log this
+  updatePosition: ->
+    $(@el).find("ul").html('')
+    @addAllTasks()
 
   render: ->
     renderProject = @template(@model.toJSON())
@@ -43,6 +45,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     "change input.input_task": "create_task"
 
   create_task: ->
+    console.log @$("input.input_task").val()
     model = @tasks.create(
       name: @$("input.input_task").val()
       project_id: @model.id
@@ -52,7 +55,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     @addOneTask model
 
   clear: ->
-    @model.clear()
+    @model.destroy()
 
   edit: ->
     if "displayBlock" is @model.get("displayBlock")
@@ -64,7 +67,6 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
       @model.set
         displayBlock: "displayBlock"
         displayNone: "displayNone"
-
       @model.save()
 
   dbledit: ->
@@ -77,6 +79,5 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     @model.set
       displayBlock: "displayBlock"
       displayNone: "displayNone"
-      project_name: $(e.currentTarget).val()
-
+      name: $(e.currentTarget).val()
     @model.save()
