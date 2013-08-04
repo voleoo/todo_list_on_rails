@@ -11,7 +11,6 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     @model.bind "change", @render, this
     @model.bind "destroy", @remove, this
     @template = HoganTemplates["projects/project"]
-    console.log @
 
   addOneTask: (model) ->
     view = new TodoListOnRails.Views.Tasks.TasksView(model: model)
@@ -41,7 +40,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     "click .pencil-head": "edit"
     "dblclick .project-name": "dbledit"
     "change input.input-name": "edited"
-    "click .create-task": "create_task"
+    "click .button-create-task": "create_task"
     "change input.input-task": "create_task"
 
   create_task: ->

@@ -17,8 +17,8 @@ class TodoListOnRails.Views.Projects.ProjectView extends Backbone.View
     "click #create-project": "createProject"
 
   render: ->
-    @.$el.html @template.render()
-    $('body').append @.$el
+    @$el.html @template.render()
+    $('article').html @$el
 
   addOne: (Project) ->
     stView = new TodoListOnRails.Views.Projects.IndexView(model: Project)
