@@ -1,0 +1,123 @@
+li.task{
+  background: #ffffff;
+  border-bottom: 2px solid #e7ebea;
+  border-left: 2px solid #e7ebea;
+  min-height: 50px;
+  &:hover{
+    background: #fcfed5;
+    .options-task{
+      display: block;
+    }
+  }
+  &:first-child {
+    .sotr-up{
+      display: none;
+    }
+    .hr-line{
+      margin-top: 6px;
+    }
+  }
+  &:last-child {
+    border-radius: 0 0 1em 1em;
+    .sotr-down{
+      display: none;
+    }
+  }
+}
+  .check-box{
+    @include column(1);
+    border-right: 2px solid #efdadf;
+    padding-top: 15px;
+    min-height: 50px;
+    float: left;
+  }
+  .task-field{
+    @include column(19);
+    text-align: left;
+    border-left: 2px solid #efdadf;
+    border-right: 2px solid #e7ebea;
+    margin-left: 10px;
+    min-height: 50px;
+    float: left;
+    color: #999999;
+    .task-body{
+      padding-left: 15px;
+      padding-top: 17px;
+      min-height: 35px;
+      font-size: 1.4em;
+    }
+    div.edit-task{
+      text-align: left;
+      input.edit-task{
+        margin-left: 7px;
+        margin-top: 8px;
+        color: #999999;
+        font-size: 1.3em;
+        width: 96%;
+      }
+    }
+  }
+
+  .options-task{
+    @include column(3);
+    display: none;
+    padding-left: 15px;
+    padding-top: 18px;
+    min-height: 32px;
+    float: left;
+
+    .option-sort{
+      margin-left: 22px;
+      float: left;
+    }
+      .sotr-up{
+        background: url(/assets/up.png);
+        height: 4px;
+        width: 6px;
+        margin-left: 2px;
+        border: 1px solid #000000;
+      }
+      .hr-line{
+        background: url(/assets/hr_line.png);
+        height: 1px;
+        width: 10px;
+        margin: 2px 0px 2px 0px;
+      }
+      .sotr-down{
+        background: url(/assets/down.png);
+        height: 4px;
+        width: 6px;
+        margin-left: 2px;
+        border: 1px solid #000000;
+      }
+
+    .option-edit{
+      background: url(/assets/pencil_small.png);
+      height: 12px;
+      width: 12px;
+      float: left;
+    }
+    .option-line{
+      background: url(/assets/vertical_small.png);
+      margin: 0px 10px 0px 10px;
+      height: 13px;
+      width: 1px;
+      float: left;
+    }
+    .option-trash{
+      background: url(/assets/trash_small.png);
+      height: 12px;
+      width: 12px;
+      float: left;
+    }
+  }
+
+.displayNone{
+  display: none;
+}
+.displayBlock{
+  display: block;
+}
+.checked{
+  text-decoration: line-through;
+}

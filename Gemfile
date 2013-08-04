@@ -2,12 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0.rc1'
 
-gem 'sqlite3'
-gem 'mysql2'
-
 gem 'jbuilder', '~> 1.0.1'
 
-gem "haml"
 gem "haml-rails", "~> 0.4"
 
 
@@ -19,8 +15,9 @@ gem 'jquery-rails'
 
 gem "rails-backbone"
 
-#gem "haml_assets"
-#gem "hogan_assets"
+gem "eco"
+gem "haml_assets"
+gem "hogan_assets"
 
 
 group :doc do
@@ -28,20 +25,33 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :development do
+  gem 'sqlite3'
+  gem 'mysql2'
+end
+
+group :production do
+  gem 'pg'
+end
+
 group :test do
+  gem 'mysql2'
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.2.1'
   gem 'database_cleaner'
   gem 'shoulda-matchers'
 end
 
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427e7969810457213647fb8'
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
-
+gem 'heroku'
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
 

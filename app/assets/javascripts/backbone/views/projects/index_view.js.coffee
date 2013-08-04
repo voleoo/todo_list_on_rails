@@ -10,8 +10,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
 
     @model.bind "change", @render, this
     @model.bind "destroy", @remove, this
-    @template = JST["backbone/templates/projects/project"]
-    console.log @
+    @template = HoganTemplates["projects/project"]
 
   addOneTask: (model) ->
     view = new TodoListOnRails.Views.Tasks.TasksView(model: model)
@@ -30,28 +29,28 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
     @addAllTasks()
 
   render: ->
-    renderProject = @template(@model.toJSON())
+    renderProject = @template.render(@model.toJSON())
     $(@el).html renderProject
     $(@el).addClass "project"
     @addAllTasks this
     this
 
   events:
-    "click .trash_head": "clear"
-    "click .pencil_head": "edit"
-    "dblclick .project_name": "dbledit"
-    "change input.input_name": "edited"
-    "click .create_task": "create_task"
-    "change input.input_task": "create_task"
+    "click .trash-head": "clear"
+    "click .pencil-head": "edit"
+    "dblclick .project-name": "dbledit"
+    "change input.input-name": "edited"
+    "click .button-create-task": "create_task"
+    "change input.input-task": "create_task"
 
   create_task: ->
-    console.log @$("input.input_task").val()
+    console.log @$("input.input-task").val()
     model = @tasks.create(
-      name: @$("input.input_task").val()
+      name: @$("input.input-task").val()
       project_id: @model.id
       position: @tasks.where((project_id: @model.id)).length + 1
     )
-    @$("input.input_task").val ""
+    @$("input.input-task").val ""
     @addOneTask model
 
   clear: ->

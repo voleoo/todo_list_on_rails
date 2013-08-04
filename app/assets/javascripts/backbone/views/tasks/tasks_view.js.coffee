@@ -7,22 +7,22 @@ class TodoListOnRails.Views.Tasks.TasksView extends Backbone.View
   initialize: ->
     @model.bind "change", @render, @
     @model.bind "destroy", @remove, @
-    @templateTask = JST["backbone/templates/tasks/task"]
+    @templateTask = HoganTemplates["tasks/task"]
 
   render: ->
-    renderTask = @templateTask(@model.toJSON())
+    renderTask = @templateTask.render(@model.toJSON())
     $(@el).html renderTask
     $(@el).addClass "task"
     @
 
   events:
-    "click .option_trash": "clear"
-    "click input[name=checkbox]": "checked"
-    "click .option_edit": "edit"
-    "dblclick .task_body": "dbledit"
-    "change input.edit_task": "edited"
-    "click .sotr_up": "sortUp"
-    "click .sotr_down": "sortDown"
+    "click .option-trash": "clear"
+    "click input[type=checkbox]": "checked"
+    "click .option-edit": "edit"
+    "dblclick .task-body": "dbledit"
+    "change input.edit-task": "edited"
+    "click .sotr-up": "sortUp"
+    "click .sotr-down": "sortDown"
 
   sortUp: ->
     console.log @

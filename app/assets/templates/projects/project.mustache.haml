@@ -1,0 +1,15 @@
+.project-head
+  .calendar
+  %div{:class => "project-name {{displayBlock}}"}
+    {{name}}
+  %input{:class => "input-name {{displayNone}}", :placeholder => "Start typing here to create a project", :value => "{{name}}"}
+  .options
+    .pencil-head
+    .vertical-line
+    .trash-head
+.task-form
+  .big-green-plus
+  %input.input-task{:placeholder => "Start typing here to create a task", :type => "text", :value => ""}
+  .create-task
+    .button-create-task Add Task
+%ul.tasks
