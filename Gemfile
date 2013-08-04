@@ -15,7 +15,6 @@ gem 'jquery-rails'
 
 gem "rails-backbone"
 
-gem "eco"
 gem "haml_assets"
 gem "hogan_assets"
 
@@ -32,6 +31,7 @@ end
 
 group :production do
   gem 'pg'
+  gem 'rails_12factor'
 end
 
 group :test do
