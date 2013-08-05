@@ -1,18 +1,17 @@
 class TodoListOnRails.Routers.ProjectsRouter extends Backbone.Router
   initialize: () ->
     @projects = new TodoListOnRails.Collections.ProjectsCollection()
-
+    
   routes:
     "login"           : "login"
     "registration"    : "registration"
     ".*"              : "index"
 
   index: ->
-    @view = new TodoListOnRails.Views.Projects.ProjectView projects: @projects
+    new TodoListOnRails.Views.Projects.ProjectView projects: @projects
 
   login: ->
-    @view = new TodoListOnRails.Views.Logins.LoginView
-    @view.render()
+    new TodoListOnRails.Views.Logins.LoginView
+
   registration: ->
-    @view = new TodoListOnRails.Views.Registrations.RegistrationView
-    @view.render()
+    new TodoListOnRails.Views.Registrations.RegistrationView()

@@ -2,23 +2,24 @@ TodoListOnRails.Views.Logins ||= {}
 
 class TodoListOnRails.Views.Logins.LoginView extends Backbone.View
   initialize: ->
+    @model = new TodoListOnRails.Models.Login()
     @template = HoganTemplates['login']
-
+    @render()
 
   events:
-    "click .destroy" : "destroy"
+    "click .sing-in" : "sing_in"
+    "click .sing-up" : "sing_up"
 
-  tagName: "nav"
+  sing_in: ->
+    @model.set
+      email: $('input.email').val()
+      password: $('input.password').val()
+    @model.save()
 
-  destroy: () ->
-    @model.destroy()
-    this.remove()
-
-    return false
+  sing_up: ->
+    Backbone.history.navigate('/registration', {trigger: true});
 
   render: ->
-    $('nav').html @$el.html @template.render()
-    return this
-
-
-    
+    @$el.html @template.render()    
+    $('nav').html @$el
+    @

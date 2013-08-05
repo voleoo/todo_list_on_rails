@@ -1,10 +1,8 @@
 class TodoListOnRails.Models.Login extends Backbone.Model
-  paramRoot: 'login'
+  paramRoot: 'user'
 
   defaults:
     email: null
     password: null
 
-class TodoListOnRails.Collections.LoginsCollection extends Backbone.Collection
-  model: TodoListOnRails.Models.Login
-  url: '/logins'
+  url: '/user'

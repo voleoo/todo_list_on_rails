@@ -3,6 +3,9 @@ TodoListOnRails::Application.routes.draw do
   resources :projects
   resources :tasks
 
+  resource :user
+  post 'users' => 'users#registration'
+
   root to: "projects#main"
   
   # The priority is based upon order of creation: first created -> highest priority.

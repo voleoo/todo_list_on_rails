@@ -2,19 +2,25 @@ TodoListOnRails.Views.Registrations ||= {}
 
 class TodoListOnRails.Views.Registrations.RegistrationView extends Backbone.View
   initialize: ->
+    @model = new TodoListOnRails.Models.Registration()
     @template = HoganTemplates['registration']
+    @render()
 
   events:
-    "click .destroy" : "destroy"
+    "click .sing-in" : "sing_in"
+    "click .sing-up" : "sing_up"
 
-  tagName: "nav"
+  sing_in: ->
+    Backbone.history.navigate('/login', {trigger: true})
 
-  destroy: () ->
-    @model.destroy()
-    this.remove()
+  sing_up: ->
+    @model.set
+      email: $('input.email').val()
+      password: $('input.password').val()
+      password_confirmation: $('input.password_confirmation').val()
+    @model.save()
 
-    return false
-
-  render: ->
-    $('nav').html @$el.html @template.render()
-    return this
+  render: ()->
+    @$el.html @template.render()    
+    $('nav').html @$el
+    return @
