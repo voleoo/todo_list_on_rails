@@ -4,7 +4,12 @@
 @include global-reset;
 
 @import "layout";
+@import "modules/nav";
 @import "modules/main";
 @import "modules/task";
 @import "modules/add_task";
 @import "modules/project";
+
+$base-font-size: 16px;
+$base-line-height: 24px;
+@include establish-baseline;

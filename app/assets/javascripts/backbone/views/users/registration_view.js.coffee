@@ -1,9 +1,12 @@
-TodoListOnRails.Views.Registrations ||= {}
+TodoListOnRails.Views.Users ||= {}
 
-class TodoListOnRails.Views.Registrations.RegistrationView extends Backbone.View
+class TodoListOnRails.Views.Users.RegistrationView extends Backbone.View
   initialize: ->
-    @model = new TodoListOnRails.Models.Registration()
+    @model.url = '/users'
+
     @template = HoganTemplates['registration']
+    @model.bind "reset", @is_user, this
+    @model.bind "change", @is_user, this
     @render()
 
   events:
@@ -19,6 +22,10 @@ class TodoListOnRails.Views.Registrations.RegistrationView extends Backbone.View
       password: $('input.password').val()
       password_confirmation: $('input.password_confirmation').val()
     @model.save()
+
+  is_user: ->
+    if @model.id
+      new TodoListOnRails.Views.Users.MenuView model: @model 
 
   render: ()->
     @$el.html @template.render()    

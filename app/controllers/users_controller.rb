@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /user
   def index
-    @users = User.all
   end
 
   # GET /user/1
   def show
     respond_to do | format |
-      format.json { render json: @projects }
+      format.json { render json: current_user }
     end
   end
 
@@ -28,13 +26,14 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(user_params[:password])
       session[:user_id] = @user.id
       render json: current_user
+    else
+      render json: @user
     end
   end
 
   # POST /users
   def registration
     @user = User.new(user_params)
-
     if @user.save
       respond_to do | format |
         format.json { render json: @user }
@@ -48,25 +47,17 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /user/1
   def update
-    if @user.update(user_params)
-      redirect_to @user, notice: 'User was successfully updated.'
-    else
-      render action: 'edit'
-    end
   end
 
   # DELETE /users/1
   def destroy
-    @user.destroy
-    redirect_to users_url, notice: 'User was successfully destroyed.'
+    session[:user_id] = nil
+    respond_to do | format |
+      format.json { render json: '' }
+    end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-
     # Only allow a trusted parameter "white list" through.
     def user_params
       params.require(:user).permit(:email, :password)
