@@ -1,10 +1,10 @@
 h1{
   @include adjust-font-size-to(28px);
-  @include trailer(0)
+  @include padding-trailer();
 }
 
 h2{
-  @include leader(0);
+  @include padding-leader();
   @include adjust-font-size-to(26px);
 }
 
