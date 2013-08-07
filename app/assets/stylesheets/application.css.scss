@@ -2,6 +2,7 @@
 @import "foundation-grid";
 
 @include global-reset;
+@include establish-baseline;
 
 @import "layout";
 @import "modules/nav";
@@ -12,4 +13,3 @@
 
 $base-font-size: 16px;
 $base-line-height: 24px;
-@include establish-baseline;

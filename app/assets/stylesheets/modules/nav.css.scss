@@ -2,23 +2,31 @@ nav{
   background: #dddddd;
   width: 100%;
   @include trailing-border();
+  @include padding-trailer(0);
+  @include opacity(0.5);
+
+}
   .menu-line, .auth-line{
+    @include opaque();
     @include outerRow;
-    @include leader();
+    @include padding-leader(1, 50px);
+    @include padding-trailer(1, 50px);
     @include adjust-font-size-to(20px);
-    @include padding-trailer();
-
     text-align: right;
-
     .email{
-      display: inline-block;
+      @include inline-block;
+      @include adjust-font-size-to(12px);
     }
     .password{
-      display: inline-block;
+      @include inline-block;
+      @include adjust-font-size-to(12px);
+    }
+    .password-confirmation{
+      @include inline-block;
+      @include adjust-font-size-to(12px);
     }
     button{
-      display: inline-block;
-
+      @include inline-block;
+      @include adjust-font-size-to(8px);
     }
   }
-}

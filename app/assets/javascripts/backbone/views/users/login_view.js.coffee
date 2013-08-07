@@ -1,6 +1,8 @@
 TodoListOnRails.Views.Users ||= {}
 
 class TodoListOnRails.Views.Users.LoginView extends Backbone.View
+  className: 'big-auth-line'
+
   initialize: ->
     @model.url = '/user'
     @model.fetch()

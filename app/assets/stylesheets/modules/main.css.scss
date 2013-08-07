@@ -1,9 +1,11 @@
 h1{
-  font-size: 1.9em;
+  @include adjust-font-size-to(28px);
+  @include trailer(0)
 }
 
 h2{
-  font-size: 1.6em;
+  @include leader(0);
+  @include adjust-font-size-to(26px);
 }
 
 .footer{

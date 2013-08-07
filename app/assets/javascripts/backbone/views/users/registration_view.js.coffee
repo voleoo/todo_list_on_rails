@@ -1,6 +1,8 @@
 TodoListOnRails.Views.Users ||= {}
 
 class TodoListOnRails.Views.Users.RegistrationView extends Backbone.View
+  className: 'big-auth-line'
+
   initialize: ->
     @model.url = '/users'
 
@@ -20,7 +22,7 @@ class TodoListOnRails.Views.Users.RegistrationView extends Backbone.View
     @model.set
       email: $('input.email').val()
       password: $('input.password').val()
-      password_confirmation: $('input.password_confirmation').val()
+      password_confirmation: $('input.password-confirmation').val()
     @model.save()
 
   is_user: ->
