@@ -38,7 +38,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
   events:
     "click .trash-head": "clear"
     "click .pencil-head": "edit"
-    "dblclick .project-name": "dbledit"
+    "dblclick .project-name": "dbl_edit"
     "change input.input-name": "edited"
     "click .button-create-task": "create_task"
     "change input.input-task": "create_task"
@@ -68,7 +68,7 @@ class TodoListOnRails.Views.Projects.IndexView extends Backbone.View
         displayNone: "displayNone"
       @model.save()
 
-  dbledit: ->
+  dbl_edit: ->
     @model.set
       displayBlock: "displayNone"
       displayNone: "displayBlock"

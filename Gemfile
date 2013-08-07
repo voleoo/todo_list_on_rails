@@ -49,6 +49,8 @@ gem 'compass-rails', github: 'milgner/compass-rails', ref: '1749c06f15dc4b058427
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'cancan'
+#gem 'protected_attributes'
 
 # Use unicorn as the app server
 # gem 'unicorn'

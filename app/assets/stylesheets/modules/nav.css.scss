@@ -1,0 +1,24 @@
+nav{
+  background: #dddddd;
+  width: 100%;
+  @include trailing-border();
+  .menu-line, .auth-line{
+    @include outerRow;
+    @include leader();
+    @include adjust-font-size-to(20px);
+    @include padding-trailer();
+
+    text-align: right;
+
+    .email{
+      display: inline-block;
+    }
+    .password{
+      display: inline-block;
+    }
+    button{
+      display: inline-block;
+
+    }
+  }
+}
